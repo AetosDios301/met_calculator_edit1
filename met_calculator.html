@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MET Exam Band Score Calculator</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    box-sizing: border-box; /* Add this line */
+}
+
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid white;
+            border-radius: 10px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: transparent;
+            color: white;
+        }
+        button {
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #result {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MET Exam (0.5 System) Band Score Calculator</h1>
+        <label for="boardPercentage">Enter board percentage:</label>
+        <input type="number" id="boardPercentage" placeholder="e.g., 87">
+        <br>
+        <label for="metMarks">Enter MET Exam marks (out of 240):</label>
+        <input type="number" id="metMarks" placeholder="e.g., 147">
+        <br>
+        <button onclick="calculateScore()">Calculate</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateScore() {
+            const boardPercentage = parseFloat(document.getElementById('boardPercentage').value);
+            const metMarks = parseFloat(document.getElementById('metMarks').value);
+
+            // Calculate board points based on percentage range
+            let boardPoints;
+            if (boardPercentage >= 95) {
+                boardPoints = 10;
+            } else if (boardPercentage >= 90) {
+                boardPoints = 9.5;
+            } else if (boardPercentage >= 85) {
+                boardPoints = 9;
+            } else if (boardPercentage >= 80) {
+                boardPoints = 8.5;
+            } else if (boardPercentage >= 75) {
+                boardPoints = 8;
+            } else if (boardPercentage >= 70) {
+                boardPoints = 7.5;
+            } else if (boardPercentage >= 65) {
+                boardPoints = 7;
+            } else if (boardPercentage >= 60) {
+                boardPoints = 6.5;
+            } else if (boardPercentage >= 55) {
+                boardPoints = 6;
+            } else if (boardPercentage >= 50) {
+                boardPoints = 5.5;
+            } else if (boardPercentage >= 45) {
+                boardPoints = 5;
+            } else if (boardPercentage >= 40) {
+                boardPoints = 4.5;
+            } else if (boardPercentage >= 35) {
+                boardPoints = 4;
+            } else if (boardPercentage >= 30) {
+                boardPoints = 3.5;
+            } else if (boardPercentage >= 25) {
+                boardPoints = 3;
+            } else if (boardPercentage >= 20) {
+                boardPoints = 2.5;
+            } else if (boardPercentage >= 15) {
+                boardPoints = 2;
+            } else if (boardPercentage >= 10) {
+                boardPoints = 1.5;
+            } else if (boardPercentage >= 5) {
+                boardPoints = 1;
+            } else if (boardPercentage >= 0) {
+                boardPoints = 0.5;
+            }
+            // Calculate BoardPoints
+            const boardValues = (boardPoints / 10) * 50
+            // Calculate MET contribution
+            const metContribution = (metMarks / 240) * 50;
+
+            // Calculate total band score
+            const totalBandScore = boardValues + metContribution;
+
+            // Display result
+            document.getElementById('result').textContent = `Final Band Score: ${totalBandScore.toFixed(5)}`;
+        }
+    </script>
+</body>
+</html>
